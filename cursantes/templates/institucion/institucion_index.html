@@ -1,0 +1,59 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Institucion
+{% endblock%}
+
+{% block h1 %}
+Institucion
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_institucion' %}" role="button">Crear institucion</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar institucion
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'institucion_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col" class="d-none d-lg-table-cell">Nivel educativo</th>
+        <th scope="col" class="d-none d-xl-table-cell">CUE</th>
+        <th scope="col" class="d-none d-sm-table-cell">Telefono</th>
+        <th scope="col" >Mail</th>
+        <th scope="col" class="d-none d-xl-table-cell">Ciudad</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for institucion in institucion_list %}
+    <tr class="table-light">
+        <td scope="row">{{institucion.id}}</td>
+        <td>{{institucion.nombre}}</td>
+        <td class="d-none d-lg-table-cell">{{institucion.nivel_educativo}}</td>
+        <td class="d-none d-xl-table-cell">{{institucion.cue}}</td>
+        <td class="d-none d-sm-table-cell">{{institucion.telefono}}</td>
+        <td>{{institucion.mail}}</td>
+        <td class="d-none d-xl-table-cell">{{institucion.ciudad}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_institucion' institucion.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_institucion' institucion.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay instituciones
+{% endblock %}

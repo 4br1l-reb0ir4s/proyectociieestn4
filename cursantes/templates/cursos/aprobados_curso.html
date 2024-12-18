@@ -1,0 +1,57 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+aprobados de curso
+{% endblock%}
+
+{% block h1 %}
+aprobadoss - {{curso.cohorte}}
+{% endblock %}
+
+
+{% block buscar %}
+Buscar Cursante
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'aprobados_mark' curso.id %}" role="button">Marcar aprobados</a>
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary" href="{% url 'aprobados_curso' curso.id %}">Quitar Filtros</a>
+{% endblock %}
+
+
+
+{% block table %}
+    <table class="table table-primary table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Promedio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aprobados in object_list %}
+                <tr class="">
+                    <td>{{ aprobados.cursante.id }}</td>
+                    <td>{{ aprobados.cursante.nombre }}</td>
+                    <td>{{ aprobados.cursante.apellido }}</td>
+                    <td>{{ aprobados.nota }}</td>
+                    <td> 
+                        <a name="" id="" class="" href="{% url 'aprobados_edit_cursante'  pk=aprobados.id pk_cursante=aprobados.cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a>
+                        <a name="" id="" class="" href="{% url 'eliminar_aprobados' pk=aprobados.id pk_cursante=aprobados.cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block nohay %}
+    Cursante no encontrado
+{% endblock %}

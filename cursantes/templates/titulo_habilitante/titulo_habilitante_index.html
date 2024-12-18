@@ -1,0 +1,51 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Titulo habilitante
+{% endblock%}
+
+{% block h1 %}
+Titulo habilitante
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_titulo_habilitante' %}" role="button">Crear titulo habilitante</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar titulo habilitante
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'titulo_habilitante_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Nivel educativo</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for titulo_habilitante in titulo_habilitante_list %}
+    <tr class="table-light">
+        <td scope="row">{{titulo_habilitante.id}}</td>
+        <td>{{titulo_habilitante.nombre}}</td>
+        <td>{{titulo_habilitante.nivel_educativo}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_titulo_habilitante' titulo_habilitante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_titulo_habilitante' titulo_habilitante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay titulos habilitantes
+{% endblock %}

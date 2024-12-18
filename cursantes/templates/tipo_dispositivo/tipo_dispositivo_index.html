@@ -1,0 +1,49 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Tipo dispositivo
+{% endblock%}
+
+{% block h1 %}
+Tipo dispositivo
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_tipo_dispositivo' %}" role="button">Crear tipo dispositivo</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar tipo dispositivo
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'tipo_dispositivo_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for tipo_dispositivo in tipo_dispositivo_list %}
+    <tr class="table-light">
+        <td scope="row">{{tipo_dispositivo.id}}</td>
+        <td>{{tipo_dispositivo.nombre}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_tipo_dispositivo' tipo_dispositivo.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_tipo_dispositivo' tipo_dispositivo.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay tipo dispositivo
+{% endblock %}

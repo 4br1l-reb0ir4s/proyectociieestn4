@@ -1,0 +1,49 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+    Aprobados
+{% endblock%}
+
+{% block h1 %}
+    Aprobados
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_cursante' %}" role="button">Crear cursante</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar cursante
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'cursantes_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+
+{% block table%}
+<thead>
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>apellido</th>
+        <th>aprobó</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for cursante in cursante_list %}
+    <tr class="">
+        <td scope="row">{{cursante.id}}</td>
+        <td>{{cursante.nombre}}</td>
+        <td>{{cursante.apellido}}</td>
+        <td>{{cursante.titulo_curso_aprobado}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay cursantes aprobados
+{% endblock %}

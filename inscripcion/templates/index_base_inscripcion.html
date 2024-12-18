@@ -1,0 +1,78 @@
+{% extends "publicBase.html" %}
+{% load static %}
+{% load pagination %}
+{% block title %} 
+{% endblock %}
+
+{% block content%}
+    <div class="col-lg-12">
+
+        <div class="col-lg-12">
+            <div class="row mt-4 mb-4 d-grid">
+                <h1 class="col-sm-6">{% block h1%}{% endblock %}</h1>
+                <div class="my-4 my-lg-0 col-sm-6 ">
+                    <div class="">
+                        <div class="btn-group gap-2 justify-content-end">
+                            {% block crear%}
+                            {% endblock %}
+                            <form class="form-inline" method="GET">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_search">{% block buscar%}{% endblock %}</button>
+                            </form>
+                            {% block list %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% if object_list %}
+            
+            <div class="table-responsive">
+                <table class="table table-primary table-striped">
+                    {% block table %}
+                    {% endblock %}
+                </table>
+            </div>
+            
+
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-sm">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{% param_replace page=page_obj.previous_page_number %}">Anterior</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                    </li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{% param_replace page=page_obj.next_page_number %}">Siguiente</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Siguiente</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+
+    {% else %}
+
+    {% block nohay %}
+    <p>No hay cursantes</p>
+    {% endblock%}
+    {% endif %}
+
+    </div>    
+    {%block contentIndex %}
+    {%endblock %}
+{% endblock %}

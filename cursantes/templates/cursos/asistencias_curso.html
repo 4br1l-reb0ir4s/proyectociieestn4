@@ -1,0 +1,60 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Asistencia de curso
+{% endblock%}
+
+{% block h1 %}
+Asistencias - {{curso.cohorte}}
+{% endblock %}
+
+
+{% block buscar %}
+Buscar Cursante
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'asistencias_mark' curso.id %}" role="button">Marcar asistencia</a>
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary" href="{% url 'asistencias_curso' curso.id %}">Quitar Filtros</a>
+{% endblock %}
+
+
+
+{% block table %}
+    <h5>Total de dias transcurridos: {{curso.dias_totales_transcurridos}}</h5>
+    <table class="table table-primary table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Días Asistidos</th>
+                <th scope="col">Promedio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asistencia in object_list %}
+                <tr class="">
+                    <td>{{ asistencia.cursante.id }}</td>
+                    <td>{{ asistencia.cursante.nombre }}</td>
+                    <td>{{ asistencia.cursante.apellido }}</td>
+                    <td>{{ asistencia.dias_asistidos }}</td>
+                    <td>{{ asistencia.calcular_porcentaje_asistencia }}%</td>
+                    <td>
+                        <a name="" id="" class="" href="{% url 'asistencias_edit_cursante'  pk=asistencia.id pk_cursante=asistencia.cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a>
+                        <a name="" id="" class="" href="{% url 'eliminar_asistencia' pk=asistencia.id pk_cursante=asistencia.cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block nohay %}
+    Cursante no encontrado
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "publicBase.html" %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data" id="form-inscripcion" class="container ">
+        <h1 class="">INSCRIBIRSE {% block name %} {% endblock %}</h1>
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" aria-describedby="nombre-input" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dni" class="form-label">D.N.I</label>
+            <input type="text" name="dni" class="form-control" id="dni" required>
+        </div>
+
+        <section class="d-flex gap-5 flex-wrap p-1 mt-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'crear_legajo' %}">No tengo legajo digital</a>
+        </section>
+        
+    </form>
+    
+    <div id="Alerts" class="mt-5">
+
+    </div>
+    <script>
+        const alertPlaceholder = document.getElementById('Alerts')
+
+        const appendAlert = (message, type) => {
+            alertPlaceholder.innerHTML='';
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+              `<div class="alert alert-dismissible alert-${type}">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                ${message}
+              </div>
+              `
+
+            ].join('')
+          
+            alertPlaceholder.append(wrapper)
+        }
+
+        const handleSubmit = (e)=>{
+            alertPlaceholder.innerHTML='';
+            let datos ={
+                nombre:e.target["nombre"].value,
+                apellido:e.target["apellido"].value,
+                dni:e.target["dni"].value
+            }
+            e.preventDefault()
+            if(datos.nombre.length == 0 || datos.apellido.length == 0 || datos.dni.length == 0){
+                appendAlert("Rellene todos los campos","danger");
+            }else{
+                const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    
+                fetch("/Buscar_Legajo",
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                        "X-CSRFToken": csrfToken
+    
+                    },
+    
+                    body:JSON.stringify({nombre:e.target["nombre"].value,apellido:e.target["apellido"].value,dni:e.target["dni"].value}),
+                    credentials: 'same-origin',
+                
+                }
+                ).then(data=>data.json()).then(res=>
+                    {
+                        appendAlert(res.message,res.type)
+                    }
+                );
+            }
+            
+        }
+        const formulario = document.getElementById("form-inscripcion").addEventListener("submit",handleSubmit);
+    </script>
+
+{% endblock %}
+

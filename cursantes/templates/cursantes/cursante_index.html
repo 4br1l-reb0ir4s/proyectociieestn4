@@ -1,0 +1,83 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Cursante
+{% endblock%}
+
+{% block h1 %}
+Cursante
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_cursante' %}" role="button">Crear cursante</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar cursante
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'cursantes_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        {% comment %} <th scope="col">Titulo habilitante</th>
+        <th scope="col">Año de egreso</th>
+        <th scope="col">Emisor titulo</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Telefono</th> 
+        <th scope="col" class="d-none d-xl-table-cell">Mail privado</th>{% endcomment %}
+        <th scope="col" class="d-none d-md-table-cell">Mail abc</th>
+        <th scope="col" class="d-none d-xl-table-cell">Cargo</th>
+        <th scope="col" class="d-none d-xl-table-cell">Situacion revista</th>
+        {% comment %} <th scope="col">Titulo de curso aprobado</th>
+        <th scope="col">Año aprobado</th>
+        <th scope="col">Area aprobada</th>
+        <th scope="col">Cohorte aprobado</th>
+        <th scope="col">Formador aprobado</th>
+        <th scope="col">Retiro certificado</th> {% endcomment %}
+        <th scope="col">CUE</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for cursante in cursante_list %}
+    <tr class="table-light">
+        <th scope="row">{{cursante.id}}</th>
+        <td>{{cursante.nombre}}</td>
+        <td>{{cursante.apellido}}</td>
+        {% comment %} <td>{{cursante.titulo_habilitante}}</td>
+        <td>{{cursante.año_egreso}}</td>
+        <td>{{cursante.emisor_titulo}}</td>
+        <td>{{cursante.direccion}}</td>
+        <td>{{cursante.telefono}}</td>
+        <td class="d-none d-xl-table-cell">{{cursante.mail_privado}}</td>{% endcomment %}
+        <td class="d-none d-md-table-cell">{{cursante.mail_abc}}</td>
+        <td class="d-none d-xl-table-cell">{{cursante.cargo}}</td>
+        <td class="d-none d-xl-table-cell">{{cursante.situacion_revista}}</td>
+        {% comment %} <td>{{cursante.titulo_curso_aprobado}}</td>
+        <td>{{cursante.año_aprobado}}</td>
+        <td>{{cursante.area_aprobado}}</td>
+        <td>{{cursante.cohorte_aprobado}}</td>
+        <td>{{cursante.formador_aprobado}}</td>
+        <td>{{cursante.retiro_certificado}}</td> {% endcomment %}
+        <td>{{cursante.cue}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_cursante' cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_cursante' cursante.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay cursantes
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Nivel educativo
+{% endblock%}
+
+{% block h1 %}
+Nivel educativo
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_nivel_educativo' %}" role="button">Crear nivel educativo</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar nivel educativo
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'nivel_educativo_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for nivel_educativo in nivel_educativo_list %}
+    <tr class="table-light">
+        <td scope="row">{{nivel_educativo.id}}</td>
+        <td>{{nivel_educativo.nombre}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_nivel_educativo' nivel_educativo.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_nivel_educativo' nivel_educativo.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay niveles educativos
+{% endblock %}

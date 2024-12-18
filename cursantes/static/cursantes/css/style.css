@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600&display=swap');
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Encode Sans", sans-serif;
+    font-weight: 1000;
+    /* Peso regular */
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-variation-settings: "wdth" 100;
+    color: #fcfafa;
+}
+#login-form {
+  position: relative;
+  z-index: 1;
+  background: #f0efef;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#login-form button {
+  width: 100%;
+}
+
+.icon-darkmode {
+  width: 2em;
+  height: 2em;
+  color:#FFFFFF;
+}
+
+.modal-backdrop{
+  display: none;
+}
+
+html>body {
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+    background-color: #f3f6f7;
+    /*Fondo general */
+    color: #000000;
+    /*Color de texto general*/
+}
+
+
+header>.verde-navbar {
+    background-color: #00aec3;
+    /*Cambia el fondo de la barra de navegación */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    button{
+        background-color: #000000;
+    }
+  
+    div>a {
+        color: #0c0c0c;
+
+    }
+
+    div>div {
+        color: #0c0c0c;
+
+    }
+
+}
+
+/*header {
+    div {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}*/
+
+main>div>div>div>div>.login-form {
+    background-color: #044e57 !important;
+
+}
+
+.fondo-inicio {
+    background-color: #838383;
+
+    
+
+    a {
+        background-color: #00aec3;
+        color: #000000;
+    }
+
+    p {
+        font-family: "Encode Sans", sans-serif;
+        font-weight: 400;
+        /* Ligera */
+        color: #000000;
+    }
+}
+
+.navbar .navbar-brand.navbar .navbar-nav .nav-link {
+    color: #111111;
+    /* Cambia el color del texto de los enlaces */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #141111;
+    /* color del texto al pasar el mouse*/
+}
+
+Botones body>main>div>div>div>div>div>div>a.btn-success {
+    background-color: #dbd2d2
+        /*Fondo del botón primario*/
+}
+
+
+.btn-primary:hover {
+    background-color: #0a0a0a;
+    /*Fondo al pasar el mouse */
+    border-color: #e4d3c8;
+}
+
+.btn-secondary {
+    background-color: #3b3939;
+    /*Fondo del botón secundario */
+    border-color: #f0e4e4;
+}
+
+.btn-secondary:hover {
+    background-color: #575757;
+    /* Fondo al pasar el mouse*/
+    border-color: #575757;
+}
+
+Cards .card {
+    border: 1px solid #110f0f;
+    /*Borde personalizado para tarjetas*/
+    border-radius: 8px;
+    /*Esquinas redondeadas*/
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-header {
+    background-color: #141414;
+    color: rgb(2, 2, 2);
+}
+
+.card .card-body {
+    background-color: rgb(22, 21, 21);
+}
+
+
+.table {
+    border: 1px solid #161515;
+    /* Agrega bordes a la tabla */
+}
+
+.table th {
+    background-color: #838383;
+    /*Fondo de encabezados */
+    color: rgb(19, 18, 18);
+    /* Color de texto en encabezados */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #646364;
+    /* Fila impar */
+}
+
+Formularios .form-control {
+    border: 1px solid #998a90;
+    /* Borde personalizado*/
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    border-color: #838383;;
+    /*Borde al enfocar*/
+    box-shadow: 0 0 5px rgba(160, 144, 4, 0.5);
+}
+
+
+.alert-primary {
+    background-color: #838383;;
+    color: rgb(15, 15, 15);
+    border-color: #838383;;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+
+}

@@ -1,0 +1,49 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Area
+{% endblock%}
+
+{% block h1 %}
+Area
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_area' %}" role="button">Agregar area</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar area
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'area_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for area in area_list %}
+    <tr class="table-light">
+        <td scope="row">{{area.id}}</td>
+        <td>{{area.nombre}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'editar_area' area.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a> |
+            <a name="" id="" class="" href="{% url 'eliminar_area' area.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay areas
+{% endblock %}

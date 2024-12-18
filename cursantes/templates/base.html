@@ -1,0 +1,155 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="{% static 'cursantes/third/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <link href="{% static 'cursantes/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'cursantes/css/style.css'%}" rel="stylesheet">
+</head>
+<body>
+  
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark verde-navbar">
+      <div class="container-fluid text-light">
+        <button class="navbar-toggler" type="button"
+          data-bs-toggle="offcanvas" 
+          data-bs-target="#navbarOffcanvas"
+          aria-controls="navbarOffcanvas"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="nav-item nav-link active " href="{% url 'inicio' %}" aria-current="page">Inicio</a>
+              <div class="d-none d-md-block navbar-nav-md flex-grow-1 pe-3">
+                <a class="nav-link dropdown-toggle ms-4" href="#" id="navbarDropdown" role="button" aria-current="page" data-bs-toggle="dropdown" aria-expanded="false">
+                  Formularios
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'aspirante_list' %}" aria-current="page">Aspirantes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cursantes_list' %}" aria-current="page">Cursantes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'curso_list' %}" aria-current="page">Cursos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'formador_list' %}" aria-current="page">Formadores</a></li>
+                  <li><a class="dropdown-item" href="{% url 'institucion_list' %}" aria-current="page">Instituciones</a></li>
+                  <li><a class="dropdown-item" href="{% url 'modalidad_list' %}" aria-current="page">Modalidades</a></li>
+                  <li><a class="dropdown-item" href="{% url 'situacion_revista_list' %}" aria-current="page">Situaciones revistas</a></li>
+                  <li><a class="dropdown-item" href="{% url 'tipo_dispositivo_list' %}" aria-current="page">Tipos de dispositivos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'titulo_habilitante_list' %}" aria-current="page">Titulos habilitantes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cohorte_list' %}" aria-current="page">Cohortes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cargo_list' %}" aria-current="page">Cargos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'area_list' %}" aria-current="page">Areas</a></li>
+                  <li><a class="dropdown-item" href="{% url 'servicio_list' %}" aria-current="page">Servicio</a></li>
+                  <li><a class="dropdown-item" href="{% url 'nivel_educativo_list' %}" aria-current="page">Nivel educativo</a></li>
+                </ul>
+              </div>
+              <div class="navbar-nav justify-content-end">
+                {% if user.is_authenticated %}
+                <div class="nav navbar-nav ms-auto"><a class="nav-link active" href="{% url 'logout' %}">Cerrar sesión</a></div>
+                {% endif %}
+              </div>
+              <br>
+              <br>
+                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mask" viewBox="0 0 16 16">
+                    <path d="M6.225 1.227A7.5 7.5 0 0 1 10.5 8a7.5 7.5 0 0 1-4.275 6.773 7 7 0 1 0 0-13.546zM4.187.966a8 8 0 1 1 7.627 14.069A8 8 0 0 1 4.186.964z"/>
+                  </svg>
+                 </a>
+               <ul class="dropdown-menu dropdown-menu-end">
+                 <li>
+                   <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme="light" aria-pressed="false" onclick="light()">
+                     <i class="bi bi-sun-fill"></i><span class="ms-2">Claro</span>
+                   </button>
+                 </li>
+                 <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme="dark" aria-pressed="false" onclick="dark()">
+                      <i class="bi bi-moon-stars-fill"></i><span class="ms-2">Oscuro</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+        </div>  
+      </div>
+    </nav>
+    <div class="offcanvas offcanvas-start bg-primary" data-bs-theme="light" id="navbarOffcanvas" tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">CIIE</h5>
+        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+        <div class="offcanvas-body text-light" data-bs-theme="light">
+          <a class="dropdown-item" href="{% url 'cursantes_list' %}" aria-current="page"><h2 class="">Cursantes</h2></a>
+          <a class="dropdown-item" href="{% url 'curso_list' %}" aria-current="page"><h2 class="">Cursos</h2></a>
+          <a class="dropdown-item" href="{% url 'formador_list' %}" aria-current="page"><h2 class="">Formadores</h2></a>
+          <a class="dropdown-item" href="{% url 'institucion_list' %}" aria-current="page"><h2 class="">Instituciones</h2></a>
+          <a class="dropdown-item" href="{% url 'modalidad_list' %}" aria-current="page"><h2 class="">Modalidades</h2></a>
+          <a class="dropdown-item" href="{% url 'situacion_revista_list' %}" aria-current="page"><h2 class="">Situaciones revistas</h2></a>
+          <a class="dropdown-item" href="{% url 'tipo_dispositivo_list' %}" aria-current="page"><h2 class="">Tipos de dispositivos</h2></a>
+          <a class="dropdown-item" href="{% url 'titulo_habilitante_list' %}" aria-current="page"><h2 class="">Titulos habilitantes</h2></a>
+          <a class="dropdown-item" href="{% url 'cohorte_list' %}" aria-current="page"><h2 class="">Cohortes</h2></a>
+          <a class="dropdown-item" href="{% url 'cargo_list' %}" aria-current="page"><h2 class="">Cargos</h2></a>
+          <a class="dropdown-item" href="{% url 'area_list' %}" aria-current="page"><h2 class="">Areas</h2></a>
+          <a class="dropdown-item" href="{% url 'servicio_list' %}" aria-current="page"><h2 class="">Areas</h2></a>
+          <a class="dropdown-item" href="{% url 'nivel_educativo_list' %}" aria-current="page"><h2 class="">Nivel Educativo</h2></a>
+        </div>
+  </div>
+
+  </header>
+  <main>
+    <div class="container" data-bs-theme="light">
+        <div class="row">
+            <div class="col-12">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <div class="modal fade" id="modal_search">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Buscar</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form method="GET" class="form-group" enctype="multipart/form-data">
+
+                    {% for field in filter.form %}
+
+                        <div class="fieldWrapper">
+                            {{ field.errors }}
+                            <div class="form-inline">
+                            <label class="col-sm-4 control-label">{{ field.label_tag }}</label>
+                            <div class="col-sm-8">{{ field }}</div>
+                            </div>
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                            <p></p>
+                        </div>
+
+                    {% endfor %}
+
+            </div>
+            
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="{% static 'cursantes/js/darkmode.js'%}"></script>
+
+</html>

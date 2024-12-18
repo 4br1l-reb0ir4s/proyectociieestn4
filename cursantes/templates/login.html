@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    <!-- Título dinámico de la página -->
+    Login
+{% endblock header %}
+
+{% block content %}
+    <!-- voy a verificar si el usuario está autenticado y redirigido -->
+    {% if next and user.is_authenticated %}
+        <div class="alert alert-warning" role="alert">
+            <h4>¡Advertencia!</h4>
+            <p>Su cuenta no posee privilegios para acceder a este sitio.</p>
+        </div>
+    {% endif %}
+    
+    <section id="login" class="text-center mt-4">
+        <div class="container">
+            <!--  en esta parte es el Formulario de inicio de sesión -->
+            <form role="form" method="post" id="login-form" class="text-white bg-primary p-4 rounded-3 shadow-sm">
+                <h1 class="mb-4">Inicio de sesión</h1>
+                {% csrf_token %}
+                
+                <!--  parte de lo que seria Campo de usuario -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" required name="username" id="id_username" placeholder="Usuario">
+                </div>
+
+                <!-- parte de lo que seria Campo de contraseña -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" required name="password" id="id_password" placeholder="Contraseña">
+                </div>
+
+                <!-- aca se encuentra el Botón de envío -->
+                <button type="submit" class="btn btn-success mt-4 w-100+">Iniciar Sesión</button>
+            </form>
+        </div>
+    </section>
+{% endblock content %}

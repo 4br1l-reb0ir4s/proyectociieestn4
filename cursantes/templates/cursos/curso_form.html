@@ -1,0 +1,10 @@
+{% extends 'form_base.html' %}
+{% load static %}
+
+{% block name %}
+curso
+{% endblock%}
+{% block boton_save %}Guardar{% endblock %}
+{% block button_link %}
+<a name="" id="" class="btn btn-danger m-2" href="{% url 'curso_list' %}">Cancelar</a>
+{% endblock%}

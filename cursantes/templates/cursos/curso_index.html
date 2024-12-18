@@ -1,0 +1,61 @@
+{% extends "index_base.html" %}
+{% load static %}
+
+{% block title%}
+Curso
+{% endblock%}
+
+{% block h1 %}
+Curso
+{% endblock %}
+
+{% block crear %}
+<a name="" id="" class="btn btn-success" href="{% url 'crear_curso' %}" role="button">Crear curso</a>
+{% endblock %}
+
+{% block buscar %}
+Buscar curso
+{% endblock %}
+
+{% block list %}
+<a class="btn btn-secondary"  href="{% url 'curso_list' %}">Quitar Filtros</a>
+{% endblock %}
+
+
+{% block table%}
+<thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col" class="d-none d-xl-table-cell">Dispositivo</th>
+        <th scope="col" class="d-none d-sm-table-cell">Cohorte</th>
+        <th scope="col" class="d-none d-md-table-cell">Formador</th>
+        <th scope="col" >Modalidad</th>
+        <th scope="col" class="d-none d-lg-table-cell">Area</th>
+        <th scope="col" >Carga horaria</th>
+        <th scope="col">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Aca va la forma en la que tengo organizado los datos -->
+    {% for curso in curso_list %}
+    <tr class="table-light">
+        <td scope="row">{{curso.id}}</td>
+        <td class="d-none d-xl-table-cell">{{curso.tipo_dispositivo}}</td>
+        <td class="d-none d-sm-table-cell">{{curso.cohorte}}</td>
+        <td class="d-none d-md-table-cell">{{curso.nombre_formador}}</td>
+        <td >{{curso.modalidad}}</td>
+        <td class="d-none d-lg-table-cell">{{curso.area}}</td>
+        <td >{{curso.carga_horaria}}</td>
+        <td>
+            <a name="" id="" class="" href="{% url 'detalle_curso' curso.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/eye.svg' %}" alt="Editar" width="32" height="32"/></a>
+            <a name="" id="" class="" href="{% url 'editar_curso' curso.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/pencil-square.svg' %}" alt="Editar" width="32" height="32"/></a>
+            <a name="" id="" class="" href="{% url 'eliminar_curso' curso.id %}"><img src="{% static 'cursantes/third/bootstrap-icons/trash.svg' %}" alt="Eliminar" width="32" height="32"/></a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}
+
+{% block nohay %}
+No hay curso
+{% endblock %}
